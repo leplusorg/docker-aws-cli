@@ -1,4 +1,4 @@
-# docker-aws-cli
+# AWS CLI
 
 Docker container to run the AWS CLI.
 
