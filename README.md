@@ -1,6 +1,6 @@
 # AWS CLI
 
-Docker container to run the AWS CLI.
+Docker container to run the AWS CLI and related tools.
 
 ![Docker Build](https://github.com/thomasleplus/docker-aws-cli/workflows/Docker/badge.svg)
 ![Docker Stars](https://img.shields.io/docker/stars/thomasleplus/aws-cli)
