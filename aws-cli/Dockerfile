@@ -7,4 +7,4 @@ RUN yum update -y \
 
 ENTRYPOINT []
 
-CMD ['/bin/bash']
+CMD '/bin/bash'
