@@ -5,6 +5,8 @@ RUN yum update -y \
     && yum clean all \
     && rm -rf /var/cache/yum
 
+WORKDIR /opt
+
 ENTRYPOINT []
 
 CMD '/bin/bash'
