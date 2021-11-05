@@ -1,4 +1,4 @@
-FROM amazon/aws-cli:2.3.3
+FROM amazon/aws-cli:2.3.4
 
 RUN yum update -y \
     && yum install -y bash \
