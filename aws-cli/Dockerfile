@@ -1,7 +1,7 @@
 FROM amazon/aws-cli:2.4.7
 
 RUN yum update -y \
-    && yum install -y bash \
+    && yum install -y bash jq \
     && yum clean all \
     && rm -rf /var/cache/yum
 
