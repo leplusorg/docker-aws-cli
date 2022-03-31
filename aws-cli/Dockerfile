@@ -1,4 +1,4 @@
-FROM amazon/aws-cli:2.5.0
+FROM amazon/aws-cli:2.5.1
 
 ENV NODE_ENV production
 
