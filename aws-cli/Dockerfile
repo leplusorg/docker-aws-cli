@@ -4,7 +4,7 @@ ENV NODE_ENV production
 
 # hadolint ignore=DL3033
 RUN yum update -y \
-    && yum install -y bash curl git jq make tar unzip zip \
+    && yum install -y bash curl git jq make tar unzip xmlstarlet zip \
     && yum clean all \
     && rm -rf /var/cache/yum
 
