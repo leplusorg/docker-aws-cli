@@ -5,14 +5,17 @@ RUN yum update -y \
     && yum install -y bash curl git golang jq make tar unzip xmlstarlet zip \
     && yum clean all \
     && rm -rf /var/cache/yum \
-    && export GOVERSION="$(\go version | \cut -d ' ' -f 3)" \
-    && export GO_INSTALL_DIR=/usr/lib/golang \
-    && export GOROOT="${GO_INSTALL_DIR}" \
-    && export GOPATH=/root/golang \
-    && export PATH="${GOROOT}/bin:${GOPATH}/bin:${PATH}" \
-    && export GO111MODULE=on \
-    && export GOSUMDB=off \
-    && go get -u github.com/raviqqe/liche
+    && set -o pipefail
+    
+ENV GOVERSION="$(\go version | \cut -d ' ' -f 3)"
+ENV GO_INSTALL_DIR=/usr/lib/golang
+ENV GOROOT="${GO_INSTALL_DIR}"
+ENV GOPATH=/root/golang
+ENV PATH="${GOROOT}/bin:${GOPATH}/bin:${PATH}"
+ENV GO111MODULE=on
+ENV GOSUMDB=off
+
+RUN go get -u github.com/raviqqe/liche
 
 WORKDIR /opt
 
