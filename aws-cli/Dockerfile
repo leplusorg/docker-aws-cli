@@ -1,4 +1,4 @@
-FROM amazon/aws-cli:2.7.13
+FROM amazon/aws-cli:2.7.14
 
 # hadolint ignore=DL3033
 RUN yum update -y \
