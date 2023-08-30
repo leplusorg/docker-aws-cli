@@ -6,7 +6,7 @@ RUN yum update -y \
     && yum clean all \
     && rm -rf /var/cache/yum
 
-RUN pip install cfn-policy-validator
+RUN pip3 install cfn-policy-validator
 
 WORKDIR /opt
 
