@@ -6,7 +6,8 @@ RUN yum update -y \
     && yum clean all \
     && rm -rf /var/cache/yum
 
-RUN pip3 install -no-cache-dir cfn-policy-validator==0.0.21
+# hadolint ignore=DL3013
+RUN pip3 install -no-cache-dir cfn-policy-validator
 
 WORKDIR /opt
 
