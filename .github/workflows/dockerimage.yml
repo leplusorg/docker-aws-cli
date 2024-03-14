@@ -48,3 +48,14 @@ jobs:
       - name: Test the Docker image
         working-directory: ${{ env.IMAGE }}
         run: docker compose -f docker-compose.test.yml run sut
+      - name: Set RELEASE
+        run: echo "RELEASE=$(\grep ${IMAGE}/Dockerfile -e '^FROM' | sed -e 's/^.*://')" >> "${GITHUB_ENV}"
+      - name: Release ${{ env.RELEASE }}
+        if: github.event_name != 'pull_request'
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ env.RELEASE }}
+          release_name: ${{ env.RELEASE }}
+          body: Release ${{ env.RELEASE }}
