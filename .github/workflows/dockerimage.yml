@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set IMAGE
-        run: echo "IMAGE=${GITHUB_REPOSITORY#*/docker-}" >> ${GITHUB_ENV}
+        run: echo "IMAGE=${GITHUB_REPOSITORY#*/docker-}" >> "${GITHUB_ENV}"
       - uses: actions/checkout@v4
       - uses: docker/setup-qemu-action@v3
       - uses: docker/setup-buildx-action@v3
