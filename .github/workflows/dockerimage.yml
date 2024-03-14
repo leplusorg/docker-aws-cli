@@ -50,7 +50,11 @@ jobs:
         run: docker compose -f docker-compose.test.yml run sut
       - name: Set RELEASE
         run: echo "RELEASE=$(\grep ${IMAGE}/Dockerfile -e '^FROM' | sed -e 's/^.*://')" >> "${GITHUB_ENV}"
-      - name: Release ${{ env.RELEASE }}
+      - name: Tag the commit
+        run: |
+	  git tag -a "v${RELEASE}" -m "Version ${RELEASE}"
+	  git push --follow-tags
+      - name: Trigger release
         if: github.event_name != 'pull_request'
         uses: actions/create-release@v1
         env:
