@@ -52,8 +52,8 @@ jobs:
         run: echo "RELEASE=$(\grep ${IMAGE}/Dockerfile -e '^FROM' | sed -e 's/^.*://')" >> "${GITHUB_ENV}"
       - name: Tag the commit
         run: |
-	  git tag -a "v${RELEASE}" -m "Version ${RELEASE}"
-	  git push --follow-tags
+          git tag -a "v${RELEASE}" -m "Version ${RELEASE}"
+          git push --follow-tags
       - name: Trigger release
         if: github.event_name != 'pull_request'
         uses: actions/create-release@v1
