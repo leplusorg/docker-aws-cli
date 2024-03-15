@@ -56,7 +56,7 @@ jobs:
           RC="$(\grep ${IMAGE}/Dockerfile -e '^FROM' | sed -e 's/^.*://')"
           if [[ "${RC}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] && ! git show-ref --tags --verify --quiet "refs/tags/v${RC}" ; then
             echo "RELEASE=${RC}" >> "${GITHUB_ENV}"
-	  fi
+          fi
       - name: Trigger release
         if: env.RELEASE = true
         uses: actions/create-release@v1
