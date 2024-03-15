@@ -54,7 +54,7 @@ jobs:
         run: |
           # shellcheck disable=SC2086
           RELEASE="$(\grep ${IMAGE}/Dockerfile -e '^FROM' | sed -e 's/^.*://')"
-          if ! git show-ref --tags --verify --quiet "refs/tags/v${RELEASE}" ; then
+          if [[ "${RELEASE}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] && ! git show-ref --tags --verify --quiet "refs/tags/v${RELEASE}" ; then
             echo "RELEASE=${RELEASE}" >> "${GITHUB_ENV}"
           fi
       - name: Trigger release
