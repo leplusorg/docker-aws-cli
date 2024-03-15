@@ -50,7 +50,7 @@ jobs:
         working-directory: ${{ env.IMAGE }}
         run: docker compose -f docker-compose.test.yml run sut
       - name: Set RELEASE
-        if: github.event_name != 'pull_request' 
+        if: github.event_name != 'pull_request'
         run: |
           # shellcheck disable=SC2086
           RELEASE="$(\grep ${IMAGE}/Dockerfile -e '^FROM' | sed -e 's/^.*://')"
