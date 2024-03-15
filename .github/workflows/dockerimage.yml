@@ -50,13 +50,6 @@ jobs:
         run: docker compose -f docker-compose.test.yml run sut
       - name: Set RELEASE
         run: echo "RELEASE=$(\grep ${IMAGE}/Dockerfile -e '^FROM' | sed -e 's/^.*://')" >> "${GITHUB_ENV}"
-      - name: Tag the commit
-        run: |
-          git config --global user.email \
-            "${GITHUB_REPOSITORY_OWNER}@users.noreply.github.com"
-          git config --global user.name "${GITHUB_REPOSITORY_OWNER}"
-          git tag -a "v${RELEASE}" -m "Version ${RELEASE}"
-          git push --follow-tags
       - name: Trigger release
         if: github.event_name != 'pull_request'
         uses: actions/create-release@v1
@@ -64,5 +57,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: v${{ env.RELEASE }}
-          release_name: ${{ env.RELEASE }}
-          body: Release ${{ env.RELEASE }}
