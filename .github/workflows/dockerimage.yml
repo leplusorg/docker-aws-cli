@@ -52,7 +52,7 @@ jobs:
       - name: Set RELEASE
         if: github.event_name != 'pull_request' 
         run: |
-          RELEASE=$(\grep ${IMAGE}/Dockerfile -e '^FROM' | sed -e 's/^.*://')"
+          RELEASE="$(\grep ${IMAGE}/Dockerfile -e '^FROM' | sed -e 's/^.*://')"
           if ! git show-ref --tags --verify --quiet "refs/tags/v${RELEASE}" ; then
             echo "RELEASE=${RELEASE}" >> "${GITHUB_ENV}"
           fi
