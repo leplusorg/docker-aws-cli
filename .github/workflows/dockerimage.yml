@@ -52,6 +52,7 @@ jobs:
       - name: Set RELEASE
         if: github.event_name != 'pull_request' 
         run: |
+          # shellcheck disable=SC2086
           RELEASE="$(\grep ${IMAGE}/Dockerfile -e '^FROM' | sed -e 's/^.*://')"
           if ! git show-ref --tags --verify --quiet "refs/tags/v${RELEASE}" ; then
             echo "RELEASE=${RELEASE}" >> "${GITHUB_ENV}"
@@ -60,6 +61,6 @@ jobs:
         if: env.RELEASE != ''
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
           tag_name: v${{ env.RELEASE }}
