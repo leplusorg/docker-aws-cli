@@ -50,9 +50,14 @@ jobs:
         working-directory: ${{ env.IMAGE }}
         run: docker compose -f docker-compose.test.yml run sut
       - name: Set RELEASE
-        run: echo "RELEASE=$(\grep ${IMAGE}/Dockerfile -e '^FROM' | sed -e 's/^.*://')" >> "${GITHUB_ENV}"
+        if: github.event_name != 'pull_request' 
+        run: |
+          RELEASE=$(\grep ${IMAGE}/Dockerfile -e '^FROM' | sed -e 's/^.*://')"
+          if ! git show-ref --tags --verify --quiet "refs/tags/v${RELEASE}" ; then
+            echo "RELEASE=${RELEASE}" >> "${GITHUB_ENV}"
+          fi
       - name: Trigger release
-        if: github.event_name != 'pull_request'
+        if: env.RELEASE != ''
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
