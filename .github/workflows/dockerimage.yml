@@ -53,8 +53,8 @@ jobs:
         if: github.event_name != 'pull_request'
         run: |
           # shellcheck disable=SC2086
-          \git show-ref --tags --verify "refs/tags/v${RC}"
           RC="$(\grep ${IMAGE}/Dockerfile -e '^FROM' | \head -n 1 | \sed -e 's/^.*://')"
+          \git show-ref --tags --verify "refs/tags/v${RC}"
           if [[ "${RC}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] && ! \git show-ref --tags --verify --quiet "refs/tags/v${RC}" ; then
             \echo "RELEASE=${RC}" >> "${GITHUB_ENV}"
           fi
