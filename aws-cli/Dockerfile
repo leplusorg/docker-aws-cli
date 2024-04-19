@@ -17,12 +17,9 @@ RUN yum update -y \
 # hadolint ignore=DL3013
 RUN pip3 install --no-cache-dir cfn-policy-validator
 
-RUN adduser \
-  --home-dir "${USER_HOME}" \
-  --uid "${USER_ID}" \
-  "${USER_NAME}"
-
-RUN mkdir -p /opt && chmod 777 /opt
+RUN mkdir -p /opt \
+    && chmod 777 /opt \
+    && adduser --home-dir "${USER_HOME}" --uid "${USER_ID}" "${USER_NAME}"
 
 ENV HOME "${USER_HOME}"
 
