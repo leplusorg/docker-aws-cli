@@ -22,6 +22,9 @@ RUN adduser \
   --uid "${USER_ID}" \
   "${USER_NAME}"
 
+
+RUN mkdir /opt && chmod 777 /opt
+
 ENV HOME "${USER_HOME}"
 
 USER "${USER_NAME}"
