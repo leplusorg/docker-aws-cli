@@ -47,6 +47,7 @@ jobs:
         working-directory: ${{ env.IMAGE }}
         run: docker compose -f docker-compose.test.yml run sut
       - name: Set VERSION
+        if: github.ref == 'refs/heads/main'
         run: |
           # shellcheck disable=SC2086
           VERSION="$(\grep ${IMAGE}/Dockerfile -e '^FROM' | \head -n 1 | \sed -e 's/@.*$//; s/^.*://;')"
@@ -59,24 +60,19 @@ jobs:
         id: check-release
         with:
           script: |
-            try {
-              const { VERSION } = process.env
-              github.rest.repos.getReleaseByTag({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                tag: `v${VERSION}`,
-              })
-              core.info(`Release v${VERSION} found`)
-            } catch (error) {
-              if (error.status === 404) {
-                core.info(`Release v${VERSION} not found`)
-              } else {
+            const { VERSION } = process.env
+            github.rest.repos.getReleaseByTag({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag: `v${VERSION}`,
+            }).catch(function(error) {
+              if (error.status != 404) {
                 throw error
               }
-            }
+            })
           result-encoding: string
       - name: Trigger release
-        if: github.ref == 'refs/heads/main'
+        if: env.VERSION != '' && steps.check-release.outputs.result == 'undefined'
         uses: actions/create-release@0cb9c9b65d5d1901c1f53e5e66eaf4afd303e70e # v1.1.4
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
