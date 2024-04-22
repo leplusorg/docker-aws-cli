@@ -59,11 +59,11 @@ jobs:
         id: get-latest-release
         with:
           script: |
-	    const { RELEASE } = process.env
+            const { RELEASE } = process.env
             github.rest.repos.getReleaseByTag({
               owner: context.repo.owner,
               repo: context.repo.repo,
-	      tag: ${RELEASE},
+              tag: ${RELEASE},
             })
           result-encoding: string
       - name: FIXME
