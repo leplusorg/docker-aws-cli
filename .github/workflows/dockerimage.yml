@@ -65,12 +65,13 @@ jobs:
                 repo: context.repo.repo,
                 tag: `v${VERSION}`,
               })
+              console.log(result)
             } catch (e) {
+              console.log(e.status)
               if (e.status != 404) {
                 throw e;
               }
             }
-            console.log(result)
           result-encoding: string
       - name: FIXME
         run: echo ${{ steps.check-release.outputs.result }}
