@@ -65,7 +65,7 @@ jobs:
               repo: context.repo.repo,
               tag: ${RELEASE},
             })
-	    console.log(result)
+            console.log(result)
           result-encoding: string
       - name: FIXME
         run: echo ${{ steps.get-latest-release.outputs.result }}
