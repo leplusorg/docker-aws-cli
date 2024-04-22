@@ -73,6 +73,7 @@ jobs:
                 throw e
               } else {
                 return
+              }
             }
           result-encoding: string
       - name: FIXME
