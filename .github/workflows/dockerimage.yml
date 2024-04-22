@@ -59,22 +59,13 @@ jobs:
         with:
           script: |
             const { VERSION } = process.env
-            try {
-              const result = github.rest.repos.getReleaseByTag({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                tag: `v${VERSION}`,
-              })
-              console.log(result)
-              return result
-            } catch (e) {
-              console.log(e.status)
-              if (e.status != 404) {
-                throw e
-              } else {
-                return
-              }
-            }
+            github.rest.repos.getReleaseByTag({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag: `v${VERSION}`,
+            }).catch(e => if (e.status != 404) {
+              throw e
+            })
           result-encoding: string
       - name: FIXME
         run: echo ${{ steps.check-release.outputs.result }}
