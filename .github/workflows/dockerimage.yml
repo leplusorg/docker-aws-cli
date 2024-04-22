@@ -63,8 +63,10 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               tag: `v${VERSION}`,
-            }).catch(e => if (e.status != 404) {
-              throw e
+            }).catch(function(error) {
+              if (error.status != 404) {
+                throw error
+              }
             })
           result-encoding: string
       - name: FIXME
