@@ -52,10 +52,10 @@ jobs:
         with:
           result-encoding: string
           script: |
-	     github.rest.repos.getLatestRelease({
-               owner: context.repo.owner,
-               repo: context.repo.repo,
-             })
+            github.rest.repos.getLatestRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            })
       - name: Set RELEASE
         run: |
           # shellcheck disable=SC2086
