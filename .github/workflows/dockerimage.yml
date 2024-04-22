@@ -61,7 +61,7 @@ jobs:
         with:
           script: |
             const { VERSION } = process.env
-            github.rest.repos.getReleaseByTag({
+            return github.rest.repos.getReleaseByTag({
               owner: context.repo.owner,
               repo: context.repo.repo,
               tag: `v${VERSION}`,
