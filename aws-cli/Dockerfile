@@ -14,8 +14,9 @@ RUN yum update -y \
     && yum clean all \
     && rm -rf /var/cache/yum
 
+# FIXME: --break-system-packages not supported until Python 3.11
 # hadolint ignore=DL3013
-RUN pip3 install --no-cache-dir --upgrade --break-system-packages cfn-policy-validator
+RUN pip3 install --no-cache-dir --upgrade cfn-policy-validator
 
 RUN mkdir -p /opt \
     && chmod 777 /opt \
