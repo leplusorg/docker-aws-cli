@@ -15,7 +15,7 @@ RUN yum update -y \
     && rm -rf /var/cache/yum
 
 # hadolint ignore=DL3013
-RUN pip3 install --no-cache-dir cfn-policy-validator
+RUN pip3 install --no-cache-dir --upgrade --break-system-packages cfn-policy-validator
 
 RUN mkdir -p /opt \
     && chmod 777 /opt \
