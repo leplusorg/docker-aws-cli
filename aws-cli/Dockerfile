@@ -22,7 +22,7 @@ RUN mkdir -p /opt \
     && chmod 777 /opt \
     && adduser --home-dir "${USER_HOME}" --uid "${USER_ID}" "${USER_NAME}"
 
-ENV HOME "${USER_HOME}"
+ENV HOME="${USER_HOME}"
 
 USER "${USER_NAME}"
 
