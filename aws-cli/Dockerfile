@@ -2,8 +2,6 @@ FROM amazon/aws-cli:2.19.0@sha256:256d6b71838443a69ccc4b10ba322964ebb8f6af9dabdb
 
 HEALTHCHECK NONE
 
-ENTRYPOINT []
-
 ARG USER_NAME=default
 ARG USER_HOME=/home/default
 ARG USER_ID=1000
@@ -29,3 +27,5 @@ USER "${USER_NAME}"
 WORKDIR /opt
 
 CMD ["/bin/bash"]
+
+ENTRYPOINT []
