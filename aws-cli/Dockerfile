@@ -6,6 +6,12 @@ ARG USER_NAME=default
 ARG USER_HOME=/home/default
 ARG USER_ID=1000
 
+# Upgrade python to 3.8 (best we can do with Amazon Linux 2)
+RUN yum remove python3 \
+    && amazon-linux-extras install python3.8 \
+    && ln -s /usr/bin/python3.8 /usr/bin/python3 \
+    && ln -s /usr/bin/pydoc3.8 /usr/bin/pydoc
+
 # hadolint ignore=DL3033
 RUN yum update -y \
     && yum install -y bash curl git jq make python3-pip tar unzip xmlstarlet zip \
