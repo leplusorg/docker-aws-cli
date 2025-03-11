@@ -12,9 +12,16 @@ RUN yum update -y \
     && yum clean all \
     && rm -rf /var/cache/yum
 
+SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
+
 # @TL FIXME: --break-system-packages not supported until Python 3.11
-# hadolint ignore=DL3013
-RUN pip3 install --no-cache-dir --upgrade cfn-policy-validator
+RUN pip3 install --no-cache-dir --upgrade \
+    cfn-policy-validator==0.0.35 \
+    && msg="$(pip list --outdated | grep -i -e cfn-policy-validator || true)" \
+    && if [ -n "${msg}" ]; then \
+       >&2 echo "ERROR: outdated: ${msg}" ; \
+       exit 1 ; \
+    fi
 
 RUN mkdir -p /opt \
     && chmod 777 /opt \
