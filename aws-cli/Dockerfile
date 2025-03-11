@@ -19,9 +19,10 @@ RUN yum update -y \
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-# @TL FIXME: --break-system-packages not supported until Python 3.11
+# @TL FIXME: cfn-policy-validator version is held back by Python 3.8.
+# @TL FIXME: --break-system-packages not supported until Python 3.11.
 RUN pip3 install --no-cache-dir --upgrade \
-    cfn-policy-validator==0.0.35 \
+    cfn-policy-validator==0.0.29 \
     && msg="$(pip list --outdated | grep -i -e cfn-policy-validator || true)" \
     && if [ -n "${msg}" ]; then \
        >&2 echo "ERROR: outdated: ${msg}" ; \
