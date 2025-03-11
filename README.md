@@ -24,6 +24,11 @@ output of the `aws` command. The tool `cfn-policy-validator` is also
 included to run IAM policies from a CloudFormation template through
 IAM Access Analyzer checks.
 
+Another significant difference with the official image is that this
+image is not running using the `root` user. Running as `root` should
+not be necessary for CI/CD activities and it is considered a security
+risk.
+
 ## Usage
 
 To run the AWS CLI using this image:

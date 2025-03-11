@@ -6,24 +6,36 @@ ARG USER_NAME=default
 ARG USER_HOME=/home/default
 ARG USER_ID=1000
 
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 # Upgrade python to 3.8 (best we can do with Amazon Linux 2)
 RUN yum remove python3 \
     && amazon-linux-extras install python3.8 \
     && ln -s /usr/bin/python3.8 /usr/bin/python3
 
-# hadolint ignore=DL3033
 RUN yum update -y \
-    && yum install -y bash curl git jq make python3-pip tar unzip xmlstarlet zip \
+    && yum install -y \
+    bash-4.2.46-34.amzn2 \
+    curl-8.3.0-1.amzn2 \
+    git-2.47.1-1.amzn2.0.2 \
+    jq-1.5-1.amzn2.0.2 \
+    make-3.82-24.amzn2 \
+    python3-pip-20.2.2-1.amzn2.0.8 \
+    tar-1.26-35.amzn2.0.4 \
+    unzip-6.0-57.amzn2.0.1 \
+    zip-3.0-11.amzn2.0.2 \
+    && if yum list updates | grep -q -e '^Updated Packages' ; then \
+       yum list updates ; \
+       exit 1 ; \
+    fi \
     && yum clean all \
     && rm -rf /var/cache/yum
-
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # @TL FIXME: cfn-policy-validator version is held back by Python 3.8.
 # @TL FIXME: --break-system-packages not supported until Python 3.11.
 RUN pip3 install --no-cache-dir --upgrade \
     cfn-policy-validator==0.0.29 \
-    && msg="$(pip list --outdated | grep -i -e cfn-policy-validator || true)" \
+    && msg="$(pip3 list --outdated | grep -i -e '^cfn-policy-validator ' || true)" \
     && if [ -n "${msg}" ]; then \
        >&2 echo "ERROR: outdated: ${msg}" ; \
        exit 1 ; \
