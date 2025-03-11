@@ -10,6 +10,18 @@ Docker image to run the AWS CLI and related tools.
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/10078/badge)](https://bestpractices.coreinfrastructure.org/projects/10078)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/leplusorg/docker-aws-cli/badge)](https://securityscorecards.dev/viewer/?uri=github.com/leplusorg/docker-aws-cli)
 
+## Rational
+
+This image is based on the official
+[amazon/aws-cli](https://hub.docker.com/r/amazon/aws-cli) image. The
+main difference is that default entrypoint of the official image is
+`aws` because it is the only command that this image is meant to run.
+On the other hand, this image's default entrypoint is a shell (`bash`)
+in which you can run not only `aws` but also other commands typically
+useful when building a more advanced CI/CD pipeline. For example this
+image includes the `jq` utility often very useful to process the
+output of the `aws` command.
+
 ## Usage
 
 To run the AWS CLI using this image:
