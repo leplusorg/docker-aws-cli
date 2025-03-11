@@ -14,7 +14,7 @@ RUN yum remove python3 \
     && ln -s /usr/bin/python3.8 /usr/bin/python3
 
 RUN yum update -y \
-    && yum install -y \
+    && yum install -y --setopt=skip_missing_names_on_install=False \
     bash-4.2.46-34.amzn2 \
     curl-8.3.0-1.amzn2 \
     git-2.47.1-1.amzn2.0.2 \
