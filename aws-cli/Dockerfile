@@ -12,7 +12,7 @@ RUN yum update -y \
     && yum clean all \
     && rm -rf /var/cache/yum
 
-SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # @TL FIXME: --break-system-packages not supported until Python 3.11
 RUN pip3 install --no-cache-dir --upgrade \
