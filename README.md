@@ -20,7 +20,9 @@ On the other hand, this image's default entrypoint is a shell (`bash`)
 in which you can run not only `aws` but also other commands typically
 useful when building a more advanced CI/CD pipeline. For example this
 image includes the `jq` utility often very useful to process the
-output of the `aws` command.
+output of the `aws` command. The tool `cfn-policy-validator` is also
+included to run IAM policies from a CloudFormation template through
+IAM Access Analyzer checks.
 
 ## Usage
 
