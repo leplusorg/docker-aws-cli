@@ -24,7 +24,8 @@ RUN yum update -y \
     tar-1.26-35.amzn2.0.4 \
     unzip-6.0-57.amzn2.0.1 \
     zip-3.0-11.amzn2.0.2 \
-    && IFS=$'\n\t' if yum list updates | grep -q -e '^Updated Packages' ; then \
+    && IFS=$'\n\t' \
+    && if yum list updates | grep -q -e '^Updated Packages' ; then \
        yum list updates ; \
        exit 1 ; \
     fi \
@@ -35,7 +36,8 @@ RUN yum update -y \
 # @TL FIXME: --break-system-packages not supported until Python 3.11.
 RUN pip3 install --no-cache-dir --upgrade \
     cfn-policy-validator==0.0.29 \
-    && IFS=$'\n\t' msg="$(pip3 list --outdated | grep -i -e '^cfn-policy-validator ' || true)" \
+    && IFS=$'\n\t' \
+    && msg="$(pip3 list --outdated | grep -i -e '^cfn-policy-validator ' || true)" \
     && if [ -n "${msg}" ]; then \
        >&2 echo "ERROR: outdated: ${msg}" ; \
        exit 1 ; \
