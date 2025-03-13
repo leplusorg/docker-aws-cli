@@ -43,8 +43,7 @@ RUN pip3 install --no-cache-dir --upgrade \
        exit 1 ; \
     fi
 
-RUN mkdir -p /opt \
-    && chmod 777 /opt \
+RUN mkdir -m 777 /opt \
     && adduser --home-dir "${USER_HOME}" --uid "${USER_ID}" "${USER_NAME}"
 
 ENV HOME="${USER_HOME}"
