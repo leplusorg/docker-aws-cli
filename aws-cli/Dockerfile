@@ -46,9 +46,9 @@ RUN pip3 install --no-cache-dir --upgrade \
 RUN chmod 777 /opt \
     && adduser --home-dir "${USER_HOME}" --uid "${USER_ID}" "${USER_NAME}"
 
-ENV HOME="${USER_HOME}"
-
 USER "${USER_NAME}"
+
+ENV HOME="${USER_HOME}"
 
 WORKDIR /opt
 
