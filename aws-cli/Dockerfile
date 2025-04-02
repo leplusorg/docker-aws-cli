@@ -20,7 +20,7 @@ RUN yum update -y \
     git-2.47.1-1.amzn2.0.2 \
     jq-1.5-1.amzn2.0.2 \
     make-3.82-24.amzn2 \
-    python3-pip-20.2.2-1.amzn2.0.9 \
+    python3-pip-20.2.2-1.amzn2.0.10 \
     tar-1.26-35.amzn2.0.4 \
     unzip-6.0-57.amzn2.0.1 \
     zip-3.0-11.amzn2.0.2 \
