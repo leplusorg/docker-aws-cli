@@ -1,4 +1,4 @@
-FROM amazon/aws-cli:2.25.11@sha256:7a4bf3e634eb95ea476c5baacde1790a41cf9ae5a73572ed1edfa6bd93c57fd4
+FROM amazon/aws-cli:2.25.12@sha256:59451c0f2225dad023577bba8d48a12d41336712b86538b33abed8ad1cd31081
 
 HEALTHCHECK NONE
 
