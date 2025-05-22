@@ -18,7 +18,9 @@ RUN yum update -y \
     bash-4.2.46-34.amzn2 \
     curl-8.3.0-1.amzn2.0.8 \
     git-2.47.1-1.amzn2.0.2 \
+    libxml2-2.9.1-6.amzn2.5.16 \
     jq-1.5-1.amzn2.0.2 \
+    jtidy-1.0-0.16.20100930svn1125.amzn2.0.1 \
     make-3.82-24.amzn2 \
     python3-pip-20.2.2-1.amzn2.0.10 \
     tar-1.26-35.amzn2.0.4 \
