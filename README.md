@@ -1,6 +1,6 @@
 # AWS CLI
 
-Docker image to run the AWS CLI and related tools.
+Docker container to run the AWS CLI and related tools (jq, git, zip, python, perl...).
 
 [![Dockerfile](https://img.shields.io/badge/GitHub-Dockerfile-blue)](aws-cli/Dockerfile)
 [![Docker Build](https://github.com/leplusorg/docker-aws-cli/workflows/Docker/badge.svg)](https://github.com/leplusorg/docker-aws-cli/actions?query=workflow:"Docker")
