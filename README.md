@@ -12,7 +12,7 @@ Docker container to run the AWS CLI and related tools (cfn-policy-validator, jq,
 
 ## Rational
 
-This image is based on the official
+This image is based on the latest official
 [public.ecr.aws/amazonlinux/amazonlinux](https://gallery.ecr.aws/amazonlinux/amazonlinux)
 image. This image's default entrypoint is a shell (`bash`)
 in which you can run not only `aws` but also other commands typically
