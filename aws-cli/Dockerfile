@@ -1,4 +1,4 @@
-FROM public.ecr.aws/amazonlinux/amazonlinux:2023.7.20250609.0-minimal
+FROM public.ecr.aws/amazonlinux/amazonlinux:2023.7.20250609.0-minimal@sha256:c278930b7f4d5b703962bbcfb7a0ac4c6dc6c318ee02dd8123005d68cd94df17
 
 HEALTHCHECK NONE
 
@@ -28,6 +28,15 @@ RUN dnf upgrade -y \
     && dnf clean all \
     && rm -rf /var/cache/yum
 
+RUN chmod 777 /opt \
+    && adduser --home-dir "${USER_HOME}" --uid "${USER_ID}" "${USER_NAME}"
+
+USER "${USER_NAME}"
+
+ENV HOME="${USER_HOME}"
+
+WORKDIR /opt
+
 # @TL FIXME: --break-system-packages not supported until Python 3.11.
 RUN pip3 install --no-cache-dir --upgrade \
     cfn-policy-validator==0.0.36 \
@@ -37,15 +46,6 @@ RUN pip3 install --no-cache-dir --upgrade \
        >&2 echo "ERROR: outdated: ${msg}" ; \
        exit 1 ; \
     fi
-
-RUN chmod 777 /opt \
-    && adduser --home-dir "${USER_HOME}" --uid "${USER_ID}" "${USER_NAME}"
-
-USER "${USER_NAME}"
-
-ENV HOME="${USER_HOME}"
-
-WORKDIR /opt
 
 CMD ["/bin/bash"]
 
