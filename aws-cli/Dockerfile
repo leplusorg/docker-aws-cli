@@ -21,11 +21,11 @@ RUN dnf upgrade -y \
     tar-2:1.34-1.amzn2023.0.4 \
     unzip-6.0-57.amzn2023.0.2 \
     zip-3.0-28.amzn2023.0.2 \
-    && dnf clean all \
     && IFS=$'\n\t' \
     && if dnf upgrade -y | grep -v -e '^Nothing to do.' ; then \
        exit 1 ; \
     fi \
+    && dnf clean all \
     && rm -rf /var/cache/yum
 
 RUN pip3 install --no-cache-dir --upgrade --break-system-packages \
