@@ -9,24 +9,27 @@ ARG USER_ID=1000
 SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 
 RUN dnf upgrade -y \
-    && dnf install -y --setopt=skip_missing_names_on_install=False \
-    aws-cli \
-    curl \
-    git \
-    libxml2 \
-    jq \
-    make \
-    python3 \
-    tar \
-    unzip \
-    zip \
+    && dnf install -y \
+    awscli-2-2.23.11-1.amzn2023.0.1 \
+    curl-minimal \
+    git-2.47.1-1.amzn2023.0.3 \
+    gzip-1.12-1.amzn2023.0.1 \
+    libxml2-2.10.4-1.amzn2023.0.10 \
+    jq-1.7.1-49.amzn2023.0.2 \
+    make-1:4.3-5.amzn2023.0.2 \
+    python3-3.9.22-1.amzn2023.0.1 \
+    tar-2:1.34-1.amzn2023.0.4 \
+    unzip-6.0-57.amzn2023.0.2 \
+    zip-3.0-28.amzn2023.0.2 \
     && dnf clean all \
+    && IFS=$'\n\t' \
+    && if dnf upgrade -y | grep -v -e '^Nothing to do.' ; then \
+       exit 1 ; \
+    fi \
     && rm -rf /var/cache/yum
 
-# @TL FIXME: cfn-policy-validator version is held back by Python 3.8.
-# @TL FIXME: --break-system-packages not supported until Python 3.11.
 RUN pip3 install --no-cache-dir --upgrade --break-system-packages \
-    cfn-policy-validator==0.0.29 \
+    cfn-policy-validator==0.0.36 \
     && IFS=$'\n\t' \
     && msg="$(pip3 list --outdated | grep -i -e '^cfn-policy-validator ' || true)" \
     && if [ -n "${msg}" ]; then \
