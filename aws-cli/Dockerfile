@@ -29,7 +29,7 @@ RUN dnf upgrade -y \
     && rm -rf /var/cache/yum
 
 # @TL FIXME: --break-system-packages not supported until Python 3.11.
-RUN pip3 install --no-cache-dir --upgrade --break-system-packages \
+RUN pip3 install --no-cache-dir --upgrade \
     cfn-policy-validator==0.0.36 \
     && IFS=$'\n\t' \
     && msg="$(pip3 list --outdated | grep -i -e '^cfn-policy-validator ' || true)" \
