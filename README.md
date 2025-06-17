@@ -13,10 +13,8 @@ Docker container to run the AWS CLI and related tools (cfn-policy-validator, jq,
 ## Rational
 
 This image is based on the official
-[amazon/aws-cli](https://hub.docker.com/r/amazon/aws-cli) image. The
-main difference is that default entrypoint of the official image is
-`aws` because it is the only command that this image is meant to run.
-On the other hand, this image's default entrypoint is a shell (`bash`)
+[public.ecr.aws/amazonlinux/amazonlinux](https://gallery.ecr.aws/amazonlinux/amazonlinux)
+image. This image's default entrypoint is a shell (`bash`)
 in which you can run not only `aws` but also other commands typically
 useful when building a more advanced CI/CD pipeline. For example this
 image includes the `jq` utility often very useful to process the
@@ -24,7 +22,7 @@ output of the `aws` command. The tool `cfn-policy-validator` is also
 included to run IAM policies from a CloudFormation template through
 IAM Access Analyzer checks.
 
-Another significant difference with the official image is that this
+Another significant difference with the official AWS images is that this
 image is not running using the `root` user. Running as `root` should
 not be necessary for CI/CD activities and it is considered a security
 risk.
