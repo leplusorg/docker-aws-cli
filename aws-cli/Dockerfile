@@ -1,4 +1,4 @@
-FROM amazon/aws-cli:2.27.36@sha256:0228db71362505ad9e8ad73b5da53a9d287ddc80424f1c92b1b0e5dedb9e4c70
+FROM public.ecr.aws/amazonlinux/amazonlinux:2023.7.20250609.0-minimal@sha256:c278930b7f4d5b703962bbcfb7a0ac4c6dc6c318ee02dd8123005d68cd94df17
 
 HEALTHCHECK NONE
 
@@ -8,41 +8,25 @@ ARG USER_ID=1000
 
 SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 
-# Upgrade python to 3.8 (best we can do with Amazon Linux 2)
-RUN yum remove python3 \
-    && amazon-linux-extras install python3.8 \
-    && ln -s /usr/bin/python3.8 /usr/bin/python3
-
-RUN yum update -y \
-    && yum install -y --setopt=skip_missing_names_on_install=False \
-    bash-4.2.46-34.amzn2 \
-    curl-8.3.0-1.amzn2.0.8 \
-    git-2.47.1-1.amzn2.0.2 \
-    libxml2-2.9.1-6.amzn2.5.16 \
-    jq-1.5-1.amzn2.0.2 \
-    make-3.82-24.amzn2 \
-    python3-pip-20.2.2-1.amzn2.0.10 \
-    tar-1.26-35.amzn2.0.4 \
-    unzip-6.0-57.amzn2.0.1 \
-    zip-3.0-11.amzn2.0.2 \
+RUN dnf upgrade -y \
+    && dnf install -y \
+    awscli-2-2.23.11-1.amzn2023.0.1 \
+    curl-minimal \
+    git-2.47.1-1.amzn2023.0.3 \
+    gzip-1.12-1.amzn2023.0.1 \
+    libxml2-2.10.4-1.amzn2023.0.10 \
+    jq-1.7.1-49.amzn2023.0.2 \
+    make-1:4.3-5.amzn2023.0.2 \
+    python3-3.9.22-1.amzn2023.0.1 \
+    tar-2:1.34-1.amzn2023.0.4 \
+    unzip-6.0-57.amzn2023.0.2 \
+    zip-3.0-28.amzn2023.0.2 \
     && IFS=$'\n\t' \
-    && if yum list updates | grep -q -e '^Updated Packages' ; then \
-       yum list updates ; \
+    && if dnf upgrade -y | grep -v -e '^Nothing to do.' ; then \
        exit 1 ; \
     fi \
-    && yum clean all \
+    && dnf clean all \
     && rm -rf /var/cache/yum
-
-# @TL FIXME: cfn-policy-validator version is held back by Python 3.8.
-# @TL FIXME: --break-system-packages not supported until Python 3.11.
-RUN pip3 install --no-cache-dir --upgrade \
-    cfn-policy-validator==0.0.29 \
-    && IFS=$'\n\t' \
-    && msg="$(pip3 list --outdated | grep -i -e '^cfn-policy-validator ' || true)" \
-    && if [ -n "${msg}" ]; then \
-       >&2 echo "ERROR: outdated: ${msg}" ; \
-       exit 1 ; \
-    fi
 
 RUN chmod 777 /opt \
     && adduser --home-dir "${USER_HOME}" --uid "${USER_ID}" "${USER_NAME}"
@@ -52,6 +36,16 @@ USER "${USER_NAME}"
 ENV HOME="${USER_HOME}"
 
 WORKDIR /opt
+
+# @TL FIXME: --break-system-packages not supported until Python 3.11.
+RUN pip3 install --no-cache-dir --upgrade \
+    cfn-policy-validator==0.0.36 \
+    && IFS=$'\n\t' \
+    && msg="$(pip3 list --outdated | grep -i -e '^cfn-policy-validator ' || true)" \
+    && if [ -n "${msg}" ]; then \
+       >&2 echo "ERROR: outdated: ${msg}" ; \
+       exit 1 ; \
+    fi
 
 CMD ["/bin/bash"]
 
