@@ -13,7 +13,6 @@ RUN dnf upgrade -y \
     awscli-2-2.23.11-1.amzn2023.0.1 \
     bash-5.2.15-1.amzn2023.0.2 \
     bzip2-1.0.8-6.amzn2023.0.2 \
-    coreutils-8.32-30.amzn2023.0.3 \
     curl-minimal-8.5.0-1.amzn2023.0.5 \
     diffutils-3.8-1.amzn2023.0.2 \
     findutils-1:4.8.0-2.amzn2023.0.2 \
