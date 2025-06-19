@@ -28,15 +28,6 @@ RUN dnf upgrade -y \
     && dnf clean all \
     && rm -rf /var/cache/yum
 
-RUN chmod 777 /opt \
-    && adduser --home-dir "${USER_HOME}" --uid "${USER_ID}" "${USER_NAME}"
-
-USER "${USER_NAME}"
-
-ENV HOME="${USER_HOME}"
-
-WORKDIR /opt
-
 # @TL FIXME: --break-system-packages not supported until Python 3.11.
 RUN pip3 install --no-cache-dir --upgrade \
     cfn-policy-validator==0.0.36 \
@@ -46,6 +37,15 @@ RUN pip3 install --no-cache-dir --upgrade \
        >&2 echo "ERROR: outdated: ${msg}" ; \
        exit 1 ; \
     fi
+
+RUN chmod 777 /opt \
+    && adduser --home-dir "${USER_HOME}" --uid "${USER_ID}" "${USER_NAME}"
+
+USER "${USER_NAME}"
+
+ENV HOME="${USER_HOME}"
+
+WORKDIR /opt
 
 CMD ["/bin/bash"]
 
