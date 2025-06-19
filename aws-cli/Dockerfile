@@ -11,7 +11,8 @@ SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 RUN dnf upgrade -y \
     && dnf install -y \
     awscli-2-2.23.11-1.amzn2023.0.1 \
-    curl-minimal \
+    curl-minimal-8.5.0-1.amzn2023.0.5 \
+    diffutils-3.8-1.amzn2023.0.2 \
     git-2.47.1-1.amzn2023.0.3 \
     gzip-1.12-1.amzn2023.0.1 \
     libxml2-2.10.4-1.amzn2023.0.10 \
