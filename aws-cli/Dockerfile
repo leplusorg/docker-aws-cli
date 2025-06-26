@@ -10,10 +10,10 @@ SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 
 RUN dnf upgrade -y \
     && dnf install -y \
-    awscli-2-2.23.11-1.amzn2023.0.1 \
+    awscli-2-2.25.0-1.amzn2023.0.1 \
     bash-5.2.15-1.amzn2023.0.2 \
     bzip2-1.0.8-6.amzn2023.0.2 \
-    curl-minimal-8.5.0-1.amzn2023.0.5 \
+    curl-minimal-8.11.1-4.amzn2023.0.1 \
     diffutils-3.8-1.amzn2023.0.2 \
     findutils-1:4.8.0-2.amzn2023.0.2 \
     git-2.47.1-1.amzn2023.0.3 \
@@ -21,13 +21,13 @@ RUN dnf upgrade -y \
     gzip-1.12-1.amzn2023.0.1 \
     iputils-20210202-2.amzn2023.0.4 \
     jq-1.7.1-49.amzn2023.0.2 \
-    libxml2-2.10.4-1.amzn2023.0.10 \
+    libxml2-2.10.4-1.amzn2023.0.11 \
     make-1:4.3-5.amzn2023.0.2 \
-    openssh-clients-8.7p1-8.amzn2023.0.14 \
+    openssh-8.7p1-8.amzn2023.0.15 \
     patch-2.7.6-14.amzn2023.0.2 \
     pcre2-tools-10.40-1.amzn2023.0.3 \
     pwgen-2.08-11.amzn2023 \
-    python3-3.9.22-1.amzn2023.0.1 \
+    python3-3.9.23-1.amzn2023.0.1 \
     python3-pip-21.3.1-2.amzn2023.0.11 \
     rsync-3.4.0-1.amzn2023.0.2 \
     sed-4.8-7.amzn2023.0.2 \
