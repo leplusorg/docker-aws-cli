@@ -1,6 +1,6 @@
 # AWS CLI
 
-Docker container to run the AWS CLI and related tools (cfn-policy-validator, jq, Git, ZIP, python, perl...).
+Docker container to run the AWS CLI and related tools (`cfn-policy-validator`, `jq`, `git`, `zip`, `python`, `perl`...).
 
 [![Dockerfile](https://img.shields.io/badge/GitHub-Dockerfile-blue)](aws-cli/Dockerfile)
 [![Docker Build](https://github.com/leplusorg/docker-aws-cli/workflows/Docker/badge.svg)](https://github.com/leplusorg/docker-aws-cli/actions?query=workflow:"Docker")
