@@ -16,19 +16,19 @@ RUN dnf upgrade -y \
     curl-minimal-8.11.1-4.amzn2023.0.1 \
     diffutils-3.8-1.amzn2023.0.2 \
     findutils-1:4.8.0-2.amzn2023.0.2 \
-    git-2.47.1-1.amzn2023.0.3 \
+    git-2.50.1-1.amzn2023.0.1 \
     grep-3.8-1.amzn2023.0.4 \
     gzip-1.12-1.amzn2023.0.1 \
     iputils-20210202-2.amzn2023.0.4 \
-    jq-1.7.1-49.amzn2023.0.2 \
-    libxml2-2.10.4-1.amzn2023.0.11 \
+    jq-1.7.1-50.amzn2023 \
+    libxml2-2.10.4-1.amzn2023.0.12 \
     make-1:4.3-5.amzn2023.0.2 \
     openssh-8.7p1-8.amzn2023.0.15 \
     patch-2.7.6-14.amzn2023.0.2 \
     pcre2-tools-10.40-1.amzn2023.0.3 \
     pwgen-2.08-11.amzn2023 \
-    python3-3.9.23-1.amzn2023.0.1 \
-    python3-pip-21.3.1-2.amzn2023.0.12 \
+    python3-3.9.23-1.amzn2023.0.2 \
+    python3-pip-21.3.1-2.amzn2023.0.13 \
     rsync-3.4.0-1.amzn2023.0.2 \
     sed-4.8-7.amzn2023.0.2 \
     tar-2:1.34-1.amzn2023.0.4 \
