@@ -4,4 +4,37 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: "sh -c '[ $$(id -u) -eq 1000 ] && aws --version'"
+    command: |
+      sh -c '
+        set -euo pipefail
+        if [ $(id -u) -ne 1000 ]; then
+          exit 1
+        fi
+        aws --version # awscli
+        bash --version # bash
+        bzip2 --help # bzip2
+        cfn-policy-validator --version # cfn-policy-validator
+        curl --version # curl
+        diff --version # diffutils
+        find --version # findutils
+        git --version # git
+        grep --version # grep
+        gzip --version # gzip
+        jq --version # jq
+        json2yaml --version # json2yaml
+        make --version # make
+        patch --version # patch
+        ping -V # iputils
+        pip --version # py3-pip
+        python --version # python3
+        rsync --version # rsync
+        sed --version # sed
+        ssh -V # openssh
+        tar --version # tar
+        unzip -h # unzip
+        wget --version # wget
+        xz --version # xz
+        yaml-paths --version # yamlpath
+        yq --version # yq
+        zip -h # zip
+      '
