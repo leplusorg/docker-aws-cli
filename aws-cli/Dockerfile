@@ -37,22 +37,28 @@ RUN dnf upgrade -y \
     xz-5.2.5-9.amzn2023.0.2 \
     zip-3.0-28.amzn2023.0.2 \
     && IFS=$'\n\t' \
-    && if dnf upgrade -y | grep -v -e '^Nothing to do.' ; then \
+    && if dnf upgrade -y | tee >(cat 1>&2) | grep -q -e '^Nothing to do.' ; then \
        exit 1 ; \
     fi \
     && dnf clean all \
     && rm -rf /var/cache/yum
 
-# @TL FIXME: --break-system-packages not supported until Python 3.11.
+# FIXME @TL workaround until Amazon Linux gets a pipx package
+# FIXME @TL --break-system-packages not supported until Python 3.11.
 RUN pip3 install --no-cache-dir --upgrade \
+    pipx==1.7.1 \
+    && pip3 list --outdated | tee >(cat 1>&2) | grep -q -e '^pipx ' ; then \
+       exit 1 ; \
+    fi
+
+RUN pipx ensurepath --global \
+    && pipx install --global \
     cfn-policy-validator==0.0.36 \
     json2yaml==1.2.0 \
     yamlpath==3.8.2 \
     yq==3.4.3 \
-    && IFS=$'\n\t' \
-    && msg="$(pip3 list --outdated | grep -i -e '^cfn-policy-validator ' || true)" \
-    && if [ -n "${msg}" ]; then \
-       >&2 echo "ERROR: outdated: ${msg}" ; \
+    && if pipx upgrade-all --global | grep -q -e . ; then \
+       pipx upgrade-all --global ; \
        exit 1 ; \
     fi
 
