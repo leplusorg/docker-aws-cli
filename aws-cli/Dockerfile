@@ -36,7 +36,7 @@ RUN dnf upgrade -y \
     wget-1.21.3-1.amzn2023.0.4 \
     xz-5.2.5-9.amzn2023.0.2 \
     zip-3.0-28.amzn2023.0.2 \
-    && if dnf upgrade -y | tee -a /dev/stderr | grep -q -e '^Nothing to do.' ; then \
+    && if dnf upgrade -y | tee -a /dev/stderr | grep -q -v -e '^Nothing to do.' ; then \
        exit 1 ; \
     fi \
     && dnf clean all \
