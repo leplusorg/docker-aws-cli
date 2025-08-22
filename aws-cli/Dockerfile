@@ -36,30 +36,19 @@ RUN dnf upgrade -y \
     wget-1.21.3-1.amzn2023.0.4 \
     xz-5.2.5-9.amzn2023.0.2 \
     zip-3.0-28.amzn2023.0.2 \
-    && if dnf upgrade -y | tee -a /dev/stderr | grep -q -v -e '^Nothing to do.' ; then \
-       exit 1 ; \
-    fi \
     && dnf clean all \
     && rm -rf /var/cache/yum
 
 # FIXME @TL workaround until Amazon Linux gets a pipx package
 # FIXME @TL --break-system-packages not supported until Python 3.11.
-RUN pip3 install --no-cache-dir --upgrade \
-    pipx==1.7.1 \
-    && if pip3 list --outdated | tee -a /dev/stderr | grep -q -e '^pipx ' ; then \
-       exit 1 ; \
-    fi
+RUN pip3 install --no-cache-dir --upgrade pipx==1.7.1
 
 RUN pipx ensurepath --global \
     && pipx install --global \
     cfn-policy-validator==0.0.36 \
     json2yaml==1.2.0 \
     yamlpath==3.8.2 \
-    yq==3.4.3 \
-    && if pipx upgrade-all --global | grep -q -e . ; then \
-       pipx upgrade-all --global ; \
-       exit 1 ; \
-    fi
+    yq==3.4.3
 
 RUN chmod 777 /opt \
     && adduser --home-dir "${USER_HOME}" --uid "${USER_ID}" "${USER_NAME}"
