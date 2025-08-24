@@ -2,6 +2,8 @@ FROM public.ecr.aws/amazonlinux/amazonlinux:2023.8.20250818.0-minimal@sha256:c23
 
 HEALTHCHECK NONE
 
+ENTRYPOINT []
+
 ARG USER_NAME=default
 ARG USER_HOME=/home/default
 ARG USER_ID=1000
@@ -58,7 +60,3 @@ USER "${USER_NAME}"
 ENV HOME="${USER_HOME}"
 
 WORKDIR /opt
-
-CMD ["/bin/bash"]
-
-ENTRYPOINT []
