@@ -18,4 +18,4 @@ jobs:
         run: |
           set -euo pipefail
           IFS=$'\n\t'
-          docker run --pull always -t --user root --entrypoint /bin/sh "leplusorg/${GITHUB_REPOSITORY#*/docker-}:main" -c 'if pip3 list --outdated | tee -a /dev/stderr | grep -q -e "^pipx "; then exit 1; fi'
+          docker run --pull always -t --user root --entrypoint /bin/sh "leplusorg/${GITHUB_REPOSITORY#*/docker-}:main" -c 'if pip list --outdated | tee -a /dev/stderr | grep -q -e "^pipx "; then exit 1; fi'
