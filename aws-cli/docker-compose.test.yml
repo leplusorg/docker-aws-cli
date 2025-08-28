@@ -37,6 +37,6 @@ services:
         wget --version # wget
         xz --version # xz
         yaml-paths --version # yamlpath
-        yq --version # yq
+        yq --version # yq-go
         zip -h # zip
       '
