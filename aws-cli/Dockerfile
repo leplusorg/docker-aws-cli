@@ -19,6 +19,7 @@ RUN dnf upgrade -y \
     diffutils-3.8-1.amzn2023.0.2 \
     findutils-1:4.8.0-2.amzn2023.0.2 \
     git-2.50.1-1.amzn2023.0.1 \
+    golang-1.24.5-1.amzn2023.0.1 \
     grep-3.8-1.amzn2023.0.4 \
     gzip-1.12-1.amzn2023.0.1 \
     iputils-20210202-2.amzn2023.0.4 \
@@ -49,8 +50,10 @@ RUN pipx ensurepath --global \
     && pipx install --global \
     cfn-policy-validator==0.0.36 \
     json2yaml==1.2.0 \
-    yamlpath==3.8.2 \
-    yq==3.4.3
+    yamlpath==3.8.2
+
+# FIXME @TL workaround until Amazon Linux gets an yq package
+RUN GOBIN=/usr/local/bin go install github.com/mikefarah/yq/v4@v4.47.1
 
 RUN chmod 777 /opt \
     && adduser --home-dir "${USER_HOME}" --uid "${USER_ID}" "${USER_NAME}"
