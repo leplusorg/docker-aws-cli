@@ -14,6 +14,7 @@ services:
         aws --version # awscli
         bash --version # bash
         bzip2 --help # bzip2
+        cfn-lint --version # cfn-lint
         cfn-policy-validator --version # cfn-policy-validator
         curl --version # curl
         diff --version # diffutils

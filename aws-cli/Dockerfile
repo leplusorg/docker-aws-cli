@@ -48,6 +48,7 @@ RUN pip install --no-cache-dir --upgrade pipx==1.7.1
 
 RUN pipx ensurepath --global \
     && pipx install --global \
+    cfn-lint==1.39.1 \
     cfn-policy-validator==0.0.36 \
     json2yaml==1.2.0 \
     yamlpath==3.8.2
