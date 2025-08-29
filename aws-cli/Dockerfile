@@ -50,6 +50,7 @@ RUN pipx ensurepath --global \
     && pipx install --global \
     cfn-lint==1.39.1 \
     cfn-policy-validator==0.0.36 \
+    checkov==3.2.467 \
     json2yaml==1.2.0 \
     yamlpath==3.8.2
 

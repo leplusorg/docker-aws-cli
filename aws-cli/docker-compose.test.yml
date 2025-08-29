@@ -16,6 +16,7 @@ services:
         bzip2 --help # bzip2
         cfn-lint --version # cfn-lint
         cfn-policy-validator --version # cfn-policy-validator
+        checkov --version # checkov
         curl --version # curl
         diff --version # diffutils
         find --version # findutils
