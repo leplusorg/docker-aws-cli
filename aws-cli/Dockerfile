@@ -30,7 +30,7 @@ RUN dnf upgrade -y \
     patch-2.7.6-14.amzn2023.0.2 \
     pcre2-tools-10.40-1.amzn2023.0.3 \
     pwgen-2.08-11.amzn2023 \
-    python3-3.9.23-1.amzn2023.0.2 \
+    python3-3.9.23-1.amzn2023.0.3 \
     python3-pip-21.3.1-2.amzn2023.0.13 \
     rsync-3.4.0-1.amzn2023.0.2 \
     sed-4.8-7.amzn2023.0.2 \
