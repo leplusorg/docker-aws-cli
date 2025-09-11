@@ -24,7 +24,7 @@ RUN dnf upgrade -y \
     gzip-1.12-1.amzn2023.0.1 \
     iputils-20210202-2.amzn2023.0.4 \
     jq-1.7.1-50.amzn2023 \
-    libxml2-2.10.4-1.amzn2023.0.12 \
+    libxml2-2.10.4-1.amzn2023.0.13 \
     make-1:4.3-5.amzn2023.0.2 \
     openssh-8.7p1-8.amzn2023.0.15 \
     patch-2.7.6-14.amzn2023.0.2 \
