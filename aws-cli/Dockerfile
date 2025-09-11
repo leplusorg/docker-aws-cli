@@ -51,7 +51,7 @@ RUN pipx ensurepath --global \
     cfn-lint==1.39.1 \
     cfn-policy-validator==0.0.36 \
     checkov==3.2.470 \
-    remarshal==1.2.0 \
+    # FIXME @TL requires python 3.10: remarshal==1.2.0 \
     yamlpath==3.8.2
 
 # FIXME @TL workaround until Amazon Linux gets an yq package

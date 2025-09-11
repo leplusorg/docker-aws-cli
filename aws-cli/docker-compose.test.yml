@@ -30,7 +30,7 @@ services:
         pip --version # py3-pip
         pipx --version # pipx
         python --version # python3
-        remarshal --version # remarshal
+        # FIXME @TL requires python 3.10: remarshal --version # remarshal
         rsync --version # rsync
         sed --version # sed
         ssh -V # openssh
