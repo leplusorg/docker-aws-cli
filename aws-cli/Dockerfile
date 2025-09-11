@@ -23,7 +23,7 @@ RUN dnf upgrade -y \
     grep-3.8-1.amzn2023.0.4 \
     gzip-1.12-1.amzn2023.0.1 \
     iputils-20210202-2.amzn2023.0.4 \
-    jq-1.7.1-50.amzn2023 \
+    jq-1.7.1-51.amzn2023 \
     libxml2-2.10.4-1.amzn2023.0.12 \
     make-1:4.3-5.amzn2023.0.2 \
     openssh-8.7p1-8.amzn2023.0.15 \
