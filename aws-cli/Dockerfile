@@ -19,11 +19,11 @@ RUN dnf upgrade -y \
     diffutils-3.8-1.amzn2023.0.2 \
     findutils-1:4.8.0-2.amzn2023.0.2 \
     git-2.50.1-1.amzn2023.0.1 \
-    golang-1.24.5-1.amzn2023.0.1 \
+    golang-1.24.6-1.amzn2023.0.1 \
     grep-3.8-1.amzn2023.0.4 \
     gzip-1.12-1.amzn2023.0.1 \
     iputils-20210202-2.amzn2023.0.4 \
-    jq-1.7.1-50.amzn2023 \
+    jq-1.7.1-51.amzn2023 \
     libxml2-2.10.4-1.amzn2023.0.13 \
     make-1:4.3-5.amzn2023.0.2 \
     openssh-8.7p1-8.amzn2023.0.15 \
