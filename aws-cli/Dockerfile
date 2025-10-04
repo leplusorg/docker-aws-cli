@@ -50,7 +50,7 @@ RUN pipx ensurepath --global \
     && pipx install --global \
     cfn-lint==1.40.0 \
     cfn-policy-validator==0.0.36 \
-    checkov==3.2.472 \
+    checkov==3.2.473 \
     # FIXME @TL requires python 3.10: remarshal==1.2.0 \
     yamlpath==3.8.2
 
