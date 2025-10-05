@@ -46,12 +46,12 @@ RUN dnf upgrade -y \
 # FIXME @TL --break-system-packages not supported until Python 3.11.
 RUN pip install --no-cache-dir --upgrade pipx==1.7.1
 
+# FIXME @TL remarshal requires python 3.10
 RUN pipx ensurepath --global \
     && pipx install --global \
     cfn-lint==1.40.0 \
     cfn-policy-validator==0.0.36 \
     checkov==3.2.473 \
-    # FIXME @TL requires python 3.10: remarshal==1.2.0 \
     yamlpath==3.8.2
 
 # FIXME @TL workaround until Amazon Linux gets an yq package
