@@ -49,7 +49,7 @@ RUN pip install --no-cache-dir --upgrade pipx==1.8.0
 # FIXME @TL remarshal requires python 3.10
 RUN pipx ensurepath --global \
     && pipx install --global \
-    cfn-lint==1.40.2 \
+    cfn-lint==1.40.3 \
     cfn-policy-validator==0.0.36 \
     checkov==3.2.489 \
     yamlpath==3.8.2
