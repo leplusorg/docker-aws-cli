@@ -51,7 +51,7 @@ RUN pipx ensurepath --global \
     && pipx install --global \
     cfn-lint==1.40.3 \
     cfn-policy-validator==0.0.36 \
-    checkov==3.2.489 \
+    checkov==3.2.490 \
     yamlpath==3.8.2
 
 # FIXME @TL workaround until Amazon Linux gets an yq package
