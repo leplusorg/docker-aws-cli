@@ -47,12 +47,11 @@ RUN dnf upgrade -y \
 RUN pip install --no-cache-dir --upgrade pipx==1.8.0
 
 # FIXME @TL remarshal requires python 3.10
+COPY requirements.txt /tmp/requirements.txt
+
 RUN pipx ensurepath --global \
-    && pipx install --global \
-    cfn-lint==1.40.4 \
-    cfn-policy-validator==0.0.36 \
-    checkov==3.2.490 \
-    yamlpath==3.8.2
+    && xargs -a /tmp/requirements.txt -n 1 pipx install --global \
+    && rm -f /tmp/requirements.txt
 
 # FIXME @TL workaround until Amazon Linux gets an yq package
 RUN GOBIN=/usr/local/bin go install github.com/mikefarah/yq/v4@v4.47.1
