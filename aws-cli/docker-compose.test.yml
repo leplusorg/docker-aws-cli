@@ -12,6 +12,7 @@ services:
           exit 1
         fi
         aws --version # awscli
+        sam --version # aws-sam-cli
         bash --version # bash
         bzip2 --help # bzip2
         cfn-lint --version # cfn-lint
