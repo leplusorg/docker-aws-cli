@@ -7,6 +7,9 @@ on:
 
 permissions: {}
 
+env:
+  DOCKER_BUILDKIT: 1
+
 jobs:
   docker-release:
     if: startsWith(github.ref, 'refs/tags/')
@@ -25,6 +28,7 @@ jobs:
           echo "IMAGE=${GITHUB_REPOSITORY#*/docker-}" >> "${GITHUB_ENV}"
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
+          fetch-depth: 1
           persist-credentials: false
       - name: Set SOURCE_DATE_EPOCH
         run: |
@@ -62,6 +66,8 @@ jobs:
           provenance: mode=max
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
       - name: Sign the Docker image
         working-directory: ${{ env.IMAGE }}
         env:
