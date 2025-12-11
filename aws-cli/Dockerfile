@@ -32,7 +32,7 @@ RUN dnf upgrade -y \
     pwgen-2.08-11.amzn2023 \
     python3-3.9.25-1.amzn2023.0.1 \
     python3-pip-21.3.1-2.amzn2023.0.14 \
-    rsync-3.4.0-1.amzn2023.0.2 \
+    rsync-3.4.0-1.amzn2023.0.3 \
     sed-4.8-7.amzn2023.0.2 \
     tar-2:1.34-1.amzn2023.0.4 \
     unzip-6.0-57.amzn2023.0.2 \
