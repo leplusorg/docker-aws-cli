@@ -15,7 +15,7 @@ RUN dnf upgrade -y \
     awscli-2-2.32.1-1.amzn2023.0.1 \
     bash-5.2.15-1.amzn2023.0.2 \
     bzip2-1.0.8-6.amzn2023.0.2 \
-    curl-minimal-8.11.1-4.amzn2023.0.1 \
+    curl-minimal-8.11.1-4.amzn2023.0.3 \
     diffutils-3.8-1.amzn2023.0.2 \
     findutils-1:4.8.0-2.amzn2023.0.2 \
     git-2.50.1-1.amzn2023.0.1 \
@@ -30,9 +30,9 @@ RUN dnf upgrade -y \
     patch-2.7.6-14.amzn2023.0.2 \
     pcre2-tools-10.40-1.amzn2023.0.3 \
     pwgen-2.08-11.amzn2023 \
-    python3-3.9.24-1.amzn2023.0.4 \
+    python3-3.9.25-1.amzn2023.0.1 \
     python3-pip-21.3.1-2.amzn2023.0.14 \
-    rsync-3.4.0-1.amzn2023.0.2 \
+    rsync-3.4.0-1.amzn2023.0.3 \
     sed-4.8-7.amzn2023.0.2 \
     tar-2:1.34-1.amzn2023.0.4 \
     unzip-6.0-57.amzn2023.0.2 \
