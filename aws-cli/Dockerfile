@@ -10,6 +10,7 @@ ARG USER_ID=1000
 
 SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 
+# FIXME @TL golang needed until Amazon Linux gets an yq package
 RUN dnf upgrade -y \
     && dnf install -y \
     awscli-2-2.32.1-1.amzn2023.0.1 \
@@ -53,8 +54,13 @@ RUN pipx ensurepath --global \
     && xargs -a /tmp/requirements.txt -n 1 pipx install --global \
     && rm -f /tmp/requirements.txt
 
+COPY go.mod /tmp/go.mod
+
 # FIXME @TL workaround until Amazon Linux gets an yq package
-RUN GOBIN=/usr/local/bin go install github.com/mikefarah/yq/v4@v4.47.1
+RUN grep -E '^require\s+[a-zA-Z0-9/._-]+\s+v[0-9]+\.[0-9]+\.[0-9]+$' /tmp/go.mod | awk '{print $2"@"$3}' | while read package; do \
+        GOBIN=/usr/local/bin go install "${package}"; \
+    done \
+    && rm -f /tmp/go.mod
 
 RUN chmod 777 /opt \
     && adduser --home-dir "${USER_HOME}" --uid "${USER_ID}" "${USER_NAME}"
