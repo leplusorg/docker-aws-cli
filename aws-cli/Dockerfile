@@ -57,8 +57,8 @@ RUN pipx ensurepath --global \
 COPY go.mod /tmp/go.mod
 
 # FIXME @TL workaround until Amazon Linux gets an yq package
-RUN grep -E '^require\s+[a-zA-Z0-9/._-]+\s+v[0-9]+\.[0-9]+\.[0-9]+$' /tmp/go.mod | awk '{print $2"@"$3}' | while read package; do \
-        GOBIN=/usr/local/bin go install "${package}"; \
+RUN grep -E '^require\s+[a-zA-Z0-9/._-]+\s+v[0-9]+\.[0-9]+\.[0-9]+$' /tmp/go.mod | awk '{print $2"@"$3}' | while read -r package; do \
+        GOBIN=/usr/local/bin go install "${package}"; # hadolint ignore=DL3062 # [Pin versions]: versions are pinned \
     done \
     && rm -f /tmp/go.mod
 
