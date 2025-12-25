@@ -8,13 +8,28 @@ on:
 
 permissions: {}
 
+defaults:
+  run:
+    working-directory: aws-cli
+
 jobs:
   go-check-versions:
     runs-on: ubuntu-latest
     steps:
-      - name: Check the versions
+      - name: Check out
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Set up Go
+        uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v6.1.0
+        with:
+          go-version: 1.25.4
+      - name: Check outdated dependencies
         shell: bash
         run: |
           set -euo pipefail
           IFS=$'\n\t'
-          docker run --pull always -t --user root --entrypoint /bin/sh "leplusorg/${GITHUB_REPOSITORY#*/docker-}:main" -c 'if go install -u | tee -a /dev/stderr | grep -q -e .; then exit 1; fi'
+          if [ go list -u -m all 2>&1 | tee -a /dev/stderr | grep -q -e '\[' ]; then
+            exit 1
+          fi
