@@ -31,6 +31,8 @@ jobs:
         run: |
           set -euo pipefail
           IFS=$'\n\t'
-          if go list -u -m all 2>&1 | tee -a /dev/stderr | grep -q -e '\['; then
+          go get -u ./...
+          go mod tidy
+          if ! git diff --exit-code go.mod go.sum; then
             exit 1
           fi
