@@ -45,7 +45,7 @@ RUN dnf upgrade -y \
 
 # FIXME @TL workaround until Amazon Linux gets a pipx package
 # FIXME @TL --break-system-packages not supported until Python 3.11.
-RUN pip install --no-cache-dir --upgrade pipx==1.8.0
+RUN pip install --no-cache-dir --upgrade pipx==1.10.1
 
 # FIXME @TL remarshal requires python 3.10
 COPY requirements.txt /tmp/requirements.txt
