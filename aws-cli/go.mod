@@ -33,6 +33,6 @@ require (
 	gopkg.in/op/go-logging.v1 v1.0.0-20160211212156-b2cb9fa56473 // indirect
 )
 
-go 1.25.4
+go 1.26.1
 
 replace github.com/go-ini/ini => gopkg.in/ini.v1 v1.67.1
