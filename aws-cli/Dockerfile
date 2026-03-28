@@ -1,4 +1,4 @@
-FROM public.ecr.aws/amazonlinux/amazonlinux:2023.9.20251208.0-minimal@sha256:3f6c5a2858113e9bb6710dfccdace7dc698e83f7a012240a1d07b3a46d273999
+FROM public.ecr.aws/amazonlinux/amazonlinux:2023.10.20260325.0-minimal@sha256:45c6144a8aedb7e7981ffd953d3af02998d5248f963305b869c820e1d30353de
 
 HEALTHCHECK NONE
 
@@ -13,30 +13,38 @@ SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 # FIXME @TL golang needed until Amazon Linux gets an yq package
 RUN dnf upgrade -y \
     && dnf install -y \
-    awscli-2-2.32.1-1.amzn2023.0.1 \
+    awscli-2-2.33.15-1.amzn2023.0.1 \
     bash-5.2.15-1.amzn2023.0.2 \
     bzip2-1.0.8-6.amzn2023.0.2 \
-    curl-minimal-8.11.1-4.amzn2023.0.3 \
+    curl-minimal-8.17.0-1.amzn2023.0.1 \
     diffutils-3.8-1.amzn2023.0.2 \
     findutils-1:4.8.0-2.amzn2023.0.2 \
     git-2.50.1-1.amzn2023.0.1 \
-    golang-1.24.9-1.amzn2023.0.1 \
+    golang-1.25.8-1.amzn2023.0.1 \
     grep-3.8-1.amzn2023.0.4 \
     gzip-1.12-1.amzn2023.0.1 \
     iputils-20210202-2.amzn2023.0.4 \
     jq-1.7.1-51.amzn2023 \
-    libxml2-2.10.4-1.amzn2023.0.13 \
+    libxml2-2.10.4-1.amzn2023.0.18 \
     make-1:4.3-5.amzn2023.0.2 \
-    openssh-8.7p1-8.amzn2023.0.15 \
+    openssh-8.7p1-8.amzn2023.0.16 \
     patch-2.7.6-14.amzn2023.0.2 \
     pcre2-tools-10.40-1.amzn2023.0.3 \
     pwgen-2.08-11.amzn2023 \
-    python3-3.9.25-1.amzn2023.0.1 \
-    python3-pip-21.3.1-2.amzn2023.0.14 \
+    python3-3.9.25-1.amzn2023.0.3 \
+    python3-pip-21.3.1-2.amzn2023.0.16 \
+    python3.11-3.11.6-1.amzn2023.0.6 \
+    python3.11-pip-22.3.1-2.amzn2023.0.9 \
+    python3.12-3.12.9-1.amzn2023.0.1 \
+    python3.12-pip-23.2.1-4.amzn2023.0.7 \
+    python3.13-3.13.3-3.amzn2023.0.8 \
+    python3.13-pip-24.2-259.amzn2023.0.4 \
+    python3.14-3.14.2-2.amzn2023.0.3 \
+    python3.14-pip-25.1.1-1.amzn2023.0.1 \
     rsync-3.4.0-1.amzn2023.0.3 \
     sed-4.8-7.amzn2023.0.2 \
     tar-2:1.34-1.amzn2023.0.4 \
-    unzip-6.0-57.amzn2023.0.2 \
+    unzip-6.0-68.amzn2023.0.1 \
     wget-1.21.3-1.amzn2023.0.4 \
     xz-5.2.5-9.amzn2023.0.2 \
     zip-3.0-28.amzn2023.0.2 \
@@ -44,14 +52,12 @@ RUN dnf upgrade -y \
     && rm -rf /var/cache/yum
 
 # FIXME @TL workaround until Amazon Linux gets a pipx package
-# FIXME @TL --break-system-packages not supported until Python 3.11.
-RUN pip install --no-cache-dir --upgrade pipx==1.10.1
+RUN pip3.14 install --no-cache-dir --upgrade --break-system-packages pipx==1.11.0
 
-# FIXME @TL remarshal requires python 3.10
 COPY requirements.txt /tmp/requirements.txt
 
 RUN pipx ensurepath --global \
-    && xargs -a /tmp/requirements.txt -n 1 pipx install --global \
+    && xargs -a /tmp/requirements.txt -n 1 pipx install --python python3.14 --global \
     && rm -f /tmp/requirements.txt
 
 COPY go.mod /tmp/go.mod
