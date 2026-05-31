@@ -26,7 +26,7 @@ jobs:
         with:
           go-version: "stable"
           check-latest: true
-      - name: Check outdated dependencies
+      - name: Check the versions
         shell: bash
         run: |
           set -euo pipefail
