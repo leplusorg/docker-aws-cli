@@ -12,9 +12,16 @@ jobs:
   dnf-check-versions:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 1
+          persist-credentials: false
       - name: Check the versions
         shell: bash
         run: |
           set -euo pipefail
           IFS=$'\n\t'
-          docker run --pull always -t --user root --entrypoint /bin/sh "leplusorg/${GITHUB_REPOSITORY#*/docker-}:main" -c 'if ! dnf upgrade -y | tee -a /dev/stderr | grep -q -e "^Nothing to do."; then exit 1; fi'
+          packages=$(grep -E '^[[:space:]]+[a-zA-Z0-9._+-]+-[^-]+-[^-]+[[:space:]]*\\?[[:space:]]*$' "${GITHUB_REPOSITORY#*/docker-}/Dockerfile" | sed -E 's/^[[:space:]]+//; s/[[:space:]]*\\?[[:space:]]*$//; s/-[^-]+-[^-]+$//' | tr '\n' ' ')
+          echo "Checking packages: ${packages}"
+          docker run --pull always -t --user root -e PACKAGES="${packages}" --entrypoint /bin/sh "leplusorg/${GITHUB_REPOSITORY#*/docker-}:main" -c 'dnf check-update --refresh $PACKAGES'
