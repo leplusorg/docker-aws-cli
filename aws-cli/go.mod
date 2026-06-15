@@ -1,6 +1,6 @@
 module leplus.org/docker-aws-cli
 
-require github.com/mikefarah/yq/v4 v4.53.2
+require github.com/mikefarah/yq/v4 v4.53.3
 
 require (
 	github.com/a8m/envsubst v1.4.3 // indirect
@@ -25,9 +25,9 @@ require (
 	github.com/zclconf/go-cty v1.18.1 // indirect
 	go.yaml.in/yaml/v4 v4.0.0-rc.4 // indirect
 	golang.org/x/mod v0.36.0 // indirect
-	golang.org/x/net v0.54.0 // indirect
+	golang.org/x/net v0.55.0 // indirect
 	golang.org/x/sync v0.20.0 // indirect
-	golang.org/x/sys v0.44.0 // indirect
+	golang.org/x/sys v0.45.0 // indirect
 	golang.org/x/text v0.37.0 // indirect
 	golang.org/x/tools v0.45.0 // indirect
 )
