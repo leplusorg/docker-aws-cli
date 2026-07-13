@@ -1,4 +1,4 @@
-aws-sam-cli==1.162.1
+aws-sam-cli==1.163.0
 cfn-lint==1.52.1
 cfn-policy-validator==0.0.37
 checkov==3.3.6
