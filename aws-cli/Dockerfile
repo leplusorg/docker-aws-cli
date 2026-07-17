@@ -1,4 +1,4 @@
-FROM public.ecr.aws/amazonlinux/amazonlinux:2023.12.20260706.1-minimal@sha256:947fbf6b0de94bc3d39def14962942a92b14132d7e068d366572898a09a4cc34
+FROM public.ecr.aws/amazonlinux/amazonlinux:2023.12.20260710.0-minimal@sha256:f03a6d1b59561c1347a4c386ecb8e38588050cffa290f0ac4f5c7246d055a36e
 
 HEALTHCHECK NONE
 
