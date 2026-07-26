@@ -24,7 +24,7 @@ RUN dnf upgrade -y \
     grep-3.8-1.amzn2023.0.4 \
     gzip-1.12-1.amzn2023.0.1 \
     iputils-20210202-2.amzn2023.0.4 \
-    jq-1.7.1-51.amzn2023 \
+    jq-1.8.1-60.amzn2023 \
     libxml2-2.10.4-1.amzn2023.0.18 \
     make-1:4.3-5.amzn2023.0.2 \
     openssh-8.7p1-8.amzn2023.0.16 \
@@ -41,13 +41,13 @@ RUN dnf upgrade -y \
     python3.13-pip-24.2-259.amzn2023.0.4 \
     python3.14-3.14.2-2.amzn2023.0.3 \
     python3.14-pip-25.1.1-1.amzn2023.0.1 \
-    rsync-3.4.0-1.amzn2023.0.3 \
+    rsync-3.4.0-1.amzn2023.0.4 \
     sed-4.8-7.amzn2023.0.2 \
     tar-2:1.34-1.amzn2023.0.4 \
     unzip-6.0-68.amzn2023.0.1 \
     wget-1.21.3-1.amzn2023.0.4 \
     xz-5.2.5-9.amzn2023.0.2 \
-    zip-3.0-28.amzn2023.0.2 \
+    zip-3.0-28.amzn2023.0.3 \
     && dnf clean all \
     && rm -rf /var/cache/yum
 
