@@ -41,7 +41,7 @@ RUN dnf upgrade -y \
     python3.13-pip-24.2-259.amzn2023.0.4 \
     python3.14-3.14.2-2.amzn2023.0.3 \
     python3.14-pip-25.1.1-1.amzn2023.0.1 \
-    rsync-3.4.0-1.amzn2023.0.3 \
+    rsync-3.4.0-1.amzn2023.0.4 \
     sed-4.8-7.amzn2023.0.2 \
     tar-2:1.34-1.amzn2023.0.4 \
     unzip-6.0-68.amzn2023.0.1 \
