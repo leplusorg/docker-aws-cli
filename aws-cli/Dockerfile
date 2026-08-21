@@ -44,7 +44,7 @@ RUN dnf upgrade -y \
     rsync-3.4.0-1.amzn2023.0.4 \
     sed-4.8-7.amzn2023.0.2 \
     tar-2:1.34-1.amzn2023.0.4 \
-    unzip-6.0-68.amzn2023.0.1 \
+    unzip-6.0-68.amzn2023.0.2 \
     wget-1.21.3-1.amzn2023.0.5 \
     xz-5.2.5-9.amzn2023.0.2 \
     zip-3.0-28.amzn2023.0.3 \
