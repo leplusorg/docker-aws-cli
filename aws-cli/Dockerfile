@@ -27,7 +27,7 @@ RUN dnf upgrade -y \
     jq-1.8.1-60.amzn2023 \
     libxml2-2.10.4-1.amzn2023.0.20 \
     make-1:4.3-5.amzn2023.0.2 \
-    openssh-9.9p1-10.amzn2023.0.1 \
+    openssh-9.9p1-10.amzn2023.0.2 \
     patch-2.7.6-14.amzn2023.0.2 \
     pcre2-tools-10.40-1.amzn2023.0.3 \
     pwgen-2.08-11.amzn2023 \
@@ -45,7 +45,7 @@ RUN dnf upgrade -y \
     sed-4.8-7.amzn2023.0.2 \
     tar-2:1.34-1.amzn2023.0.4 \
     unzip-6.0-68.amzn2023.0.2 \
-    wget-1.21.3-1.amzn2023.0.4 \
+    wget-1.21.3-1.amzn2023.0.5 \
     xz-5.2.5-9.amzn2023.0.2 \
     zip-3.0-28.amzn2023.0.3 \
     && dnf clean all \
