@@ -20,7 +20,7 @@ RUN dnf upgrade -y \
     diffutils-3.8-1.amzn2023.0.2 \
     findutils-1:4.8.0-2.amzn2023.0.2 \
     git-2.50.1-1.amzn2023.0.1 \
-    golang-1.25.12-1.amzn2023.0.1 \
+    golang-1.26.7-1.amzn2023.0.1 \
     grep-3.8-1.amzn2023.0.4 \
     gzip-1.12-1.amzn2023.0.1 \
     iputils-20210202-2.amzn2023.0.4 \
@@ -32,22 +32,22 @@ RUN dnf upgrade -y \
     pcre2-tools-10.40-1.amzn2023.0.3 \
     pwgen-2.08-11.amzn2023 \
     python3-3.9.25-1.amzn2023.0.9 \
-    python3-pip-21.3.1-2.amzn2023.0.20 \
+    python3-pip-21.3.1-2.amzn2023.0.21 \
     python3.11-3.11.15-1.amzn2023.0.5 \
-    python3.11-pip-22.3.1-2.amzn2023.0.13 \
+    python3.11-pip-22.3.1-2.amzn2023.0.14 \
     python3.12-3.12.13-2.amzn2023.0.5 \
-    python3.12-pip-23.2.1-4.amzn2023.0.10 \
+    python3.12-pip-23.2.1-4.amzn2023.0.11 \
+    python3.13-pip-24.2-259.amzn2023.0.8 \
     python3.13-3.13.15-1.amzn2023.0.1 \
-    python3.13-pip-24.2-259.amzn2023.0.7 \
     python3.14-3.14.6-1.amzn2023.0.3 \
-    python3.14-pip-26.1.1-1.amzn2023.0.2 \
+    python3.14-pip-26.1.1-1.amzn2023.0.3 \
     rsync-3.4.0-1.amzn2023.0.4 \
     sed-4.8-7.amzn2023.0.2 \
     tar-2:1.34-1.amzn2023.0.4 \
     unzip-6.0-68.amzn2023.0.2 \
     wget-1.21.3-1.amzn2023.0.5 \
     xz-5.2.5-9.amzn2023.0.2 \
-    zip-3.0-28.amzn2023.0.3 \
+    zip-3.0-28.amzn2023.0.4 \
     && dnf clean all \
     && rm -rf /var/cache/yum
 
