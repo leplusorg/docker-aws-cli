@@ -40,14 +40,14 @@ RUN dnf upgrade -y \
     python3.13-3.13.14-1.amzn2023.0.3 \
     python3.13-pip-24.2-259.amzn2023.0.8 \
     python3.14-3.14.6-1.amzn2023.0.3 \
-    python3.14-pip-26.1.1-1.amzn2023.0.2 \
+    python3.14-pip-26.1.1-1.amzn2023.0.3 \
     rsync-3.4.0-1.amzn2023.0.4 \
     sed-4.8-7.amzn2023.0.2 \
     tar-2:1.34-1.amzn2023.0.4 \
     unzip-6.0-68.amzn2023.0.2 \
     wget-1.21.3-1.amzn2023.0.5 \
     xz-5.2.5-9.amzn2023.0.2 \
-    zip-3.0-28.amzn2023.0.3 \
+    zip-3.0-28.amzn2023.0.4 \
     && dnf clean all \
     && rm -rf /var/cache/yum
 
