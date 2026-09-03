@@ -34,7 +34,7 @@ RUN dnf upgrade -y \
     python3-3.9.25-1.amzn2023.0.9 \
     python3-pip-21.3.1-2.amzn2023.0.20 \
     python3.11-3.11.15-1.amzn2023.0.5 \
-    python3.11-pip-22.3.1-2.amzn2023.0.13 \
+    python3.11-pip-22.3.1-2.amzn2023.0.14 \
     python3.12-3.12.13-2.amzn2023.0.5 \
     python3.12-pip-23.2.1-4.amzn2023.0.11 \
     python3.13-3.13.14-1.amzn2023.0.3 \
