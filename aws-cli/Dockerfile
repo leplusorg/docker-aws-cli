@@ -47,7 +47,7 @@ RUN dnf upgrade -y \
     unzip-6.0-68.amzn2023.0.2 \
     wget-1.21.3-1.amzn2023.0.5 \
     xz-5.2.5-9.amzn2023.0.2 \
-    zip-3.0-28.amzn2023.0.3 \
+    zip-3.0-28.amzn2023.0.4 \
     && dnf clean all \
     && rm -rf /var/cache/yum
 
