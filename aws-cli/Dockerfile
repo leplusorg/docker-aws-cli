@@ -13,6 +13,7 @@ SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 # FIXME @TL golang needed until Amazon Linux gets an yq package
 RUN dnf upgrade -y \
     && dnf install -y \
+    amazon-ssm-agent-3.3.3598.0-1.amzn2023 \
     awscli-2-2.33.15-1.amzn2023.0.1 \
     bash-5.2.15-1.amzn2023.0.2 \
     bzip2-1.0.8-6.amzn2023.0.2 \
