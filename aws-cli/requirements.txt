@@ -1,6 +1,6 @@
 aws-sam-cli==1.166.1
 cfn-lint==1.56.1
 cfn-policy-validator==0.0.37
-checkov==3.3.16
+checkov==3.3.17
 remarshal==2.1.4
 yamlpath==3.9.1
