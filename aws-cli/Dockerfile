@@ -14,7 +14,7 @@ SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 RUN dnf upgrade -y \
     && dnf install -y \
     amazon-ssm-agent-3.3.5226.0-1.amzn2023 \
-    awscli-2-2.33.15-1.amzn2023.0.1 \
+    awscli-2-2.36.47-4.amzn2023.0.1 \
     bash-5.2.15-1.amzn2023.0.2 \
     bzip2-1.0.8-6.amzn2023.0.2 \
     curl-minimal-8.21.0-5.amzn2023.0.2 \
