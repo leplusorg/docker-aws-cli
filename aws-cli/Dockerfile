@@ -57,9 +57,13 @@ RUN pip3.14 install --no-cache-dir --upgrade --break-system-packages pipx==1.11.
 
 COPY requirements.txt /tmp/requirements.txt
 
+# Install each app from requirements.txt in its own venv, using the lines
+# marked "constraint" as pip constraints to pin some of their dependencies.
 RUN pipx ensurepath --global \
-    && xargs -a /tmp/requirements.txt -n 1 pipx install --python python3.14 --global \
-    && rm -f /tmp/requirements.txt
+    && sed -n -e 's/#[[:space:]]*constraint[[:space:]]*$//p' /tmp/requirements.txt > /tmp/constraints.txt \
+    && sed -e '/#[[:space:]]*constraint[[:space:]]*$/d' -e 's/#.*//' /tmp/requirements.txt \
+    | xargs -n 1 pipx install --python python3.14 --global --pip-args=--constraint=/tmp/constraints.txt \
+    && rm -f /tmp/requirements.txt /tmp/constraints.txt
 
 COPY go.mod /tmp/go.mod
 
