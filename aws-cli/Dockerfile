@@ -32,7 +32,7 @@ RUN dnf upgrade -y \
     patch-2.7.6-14.amzn2023.0.2 \
     pcre2-tools-10.40-1.amzn2023.0.4 \
     pwgen-2.08-11.amzn2023 \
-    python3-3.9.25-1.amzn2023.0.9 \
+    python3-3.9.25-1.amzn2023.0.11 \
     python3-pip-21.3.1-2.amzn2023.0.22 \
     python3.11-3.11.17-1.amzn2023.0.1 \
     python3.11-pip-22.3.1-2.amzn2023.0.15 \
