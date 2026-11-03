@@ -28,7 +28,7 @@ RUN dnf upgrade -y \
     jq-1.8.1-60.amzn2023 \
     libxml2-2.10.4-1.amzn2023.0.21 \
     make-1:4.3-5.amzn2023.0.2 \
-    openssh-9.9p1-10.amzn2023.0.2 \
+    openssh-9.9p1-16.amzn2023.0.1 \
     patch-2.7.6-14.amzn2023.0.2 \
     pcre2-tools-10.40-1.amzn2023.0.5 \
     pwgen-2.08-11.amzn2023 \
