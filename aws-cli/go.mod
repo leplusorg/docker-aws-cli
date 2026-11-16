@@ -1,6 +1,6 @@
 module leplus.org/docker-aws-cli
 
-require github.com/mikefarah/yq/v4 v4.54.2
+require github.com/mikefarah/yq/v4 v4.54.3
 
 require (
 	github.com/a8m/envsubst v1.4.3 // indirect
