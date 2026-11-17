@@ -20,7 +20,7 @@ RUN dnf upgrade -y \
     curl-minimal-8.21.0-5.amzn2023.0.3 \
     diffutils-3.8-1.amzn2023.0.2 \
     findutils-1:4.8.0-2.amzn2023.0.2 \
-    git-2.50.1-1.amzn2023.0.1 \
+    git-2.50.1-1.amzn2023.0.2 \
     golang-1.26.10-1.amzn2023.0.1 \
     grep-3.8-1.amzn2023.0.4 \
     gzip-1.12-1.amzn2023.0.1 \
