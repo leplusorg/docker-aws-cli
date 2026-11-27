@@ -1,5 +1,5 @@
 aws-sam-cli==1.174.0
-cfn-lint==1.60.1
+cfn-lint==1.61.0
 cfn-policy-validator==0.0.37
 checkov==3.4.6
 remarshal==2.1.4
